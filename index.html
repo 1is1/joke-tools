@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8" />
+  <title>Jokeværktøjer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg: #e5ebf4;
+      --card: #ffffff;
+      --accent: #2563eb;
+      --text: #0f172a;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1.4rem;
+      padding: 1.4rem;
+    }
+    .header {
+      text-align: center;
+      max-width: 520px;
+    }
+    .header h1 {
+      margin: 0;
+      font-size: 1.4rem;
+      color: var(--text);
+    }
+    .header p {
+      margin: .35rem 0 0 0;
+      font-size: .75rem;
+      color: #4b5563;
+    }
+    .tool-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 1rem;
+      width: min(980px, 100%);
+    }
+
+    /* card is a link */
+    .tool-card {
+      background: var(--card);
+      border: 1px solid rgba(15,23,42,.06);
+      border-radius: 14px;
+      padding: .7rem .75rem .8rem;
+      display: flex;
+      flex-direction: column;
+      gap: .4rem;
+      text-decoration: none;
+      color: inherit;
+      position: relative;
+      transition: transform .12s ease-out, box-shadow .12s ease-out;
+      cursor: pointer;
+    }
+    .tool-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 24px rgba(15,23,42,.08);
+    }
+    .tool-title {
+      font-weight: 600;
+      font-size: .78rem;
+      color: var(--text);
+    }
+    .tool-short {
+      font-size: .63rem;
+      color: #6b7280;
+    }
+    .tool-button {
+      margin-top: auto;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 999px;
+      padding: .3rem .7rem .35rem;
+      font-size: .63rem;
+      width: fit-content;
+      pointer-events: none; /* card handles click */
+    }
+
+    /* speech bubble UNDER card */
+    .tooltip {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      margin-top: .45rem;
+      background: #ffffff;
+      border: 1px solid rgba(15,23,42,.08);
+      border-radius: 10px;
+      padding: .55rem .6rem .55rem;
+      width: 100%;
+      box-shadow: 0 10px 28px rgba(15,23,42,.12);
+      font-size: .6rem;
+      line-height: 1.35;
+      color: #0f172a;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .12s ease-out;
+      z-index: 10;
+    }
+    .tooltip::before {
+      content: "";
+      position: absolute;
+      top: -6px;
+      left: 18px;
+      border-width: 6px;
+      border-style: solid;
+      border-color: transparent transparent #ffffff transparent;
+      filter: drop-shadow(0 -1px 1px rgba(15,23,42,.05));
+    }
+    .tool-card:hover .tooltip {
+      opacity: 1;
+    }
+
+    /* small return button component style (for reuse) */
+    .back-to-overview {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      background: #ffffff;
+      border: 1px solid rgba(15,23,42,.05);
+      border-radius: 999px;
+      padding: .35rem .75rem .4rem;
+      font-size: .63rem;
+      color: #0f172a;
+      text-decoration: none;
+      display: inline-flex;
+      gap: .25rem;
+      align-items: center;
+      box-shadow: 0 10px 28px rgba(15,23,42,.08);
+    }
+    .back-to-overview:hover {
+      background: #f8fafc;
+    }
+
+    @media (max-width: 600px) {
+      body { justify-content: flex-start; }
+      .header h1 { font-size: 1.25rem; }
+      .tooltip { position: static; opacity: 1; margin-top: .4rem; }
+      .tool-card:hover { transform: none; }
+      .back-to-overview { position: static; margin-top: .5rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>Dine tre jokeværktøjer</h1>
+    <p>Klik for at åbne. Hold musen over for at se hvornår du skal bruge værktøjet.</p>
+  </div>
+
+  <div class="tool-row">
+    <!-- Joke Web Bygger -->
+    <a class="tool-card" href="https://1is1.github.io/joke-web/" target="_blank" rel="noreferrer">
+      <div class="tool-title">1. Joke Web Bygger</div>
+      <div class="tool-short">Udforsk emner og associationer.</div>
+      <div class="tool-button">Åbn værktøj</div>
+
+      <div class="tooltip">
+        <strong>Hvornår:</strong> Når du ikke ved hvad du skal skrive om.<br><br>
+        <strong>Hvad den gør:</strong> Starter fra et hovedemne og hjælper dig med at finde små, konkrete underemner → de kan sendes videre til de andre værktøjer.
+      </div>
+    </a>
+
+    <!-- Set-up Maskine -->
+    <a class="tool-card" href="https://1is1.github.io/joke-sentence-machine/" target="_blank" rel="noreferrer">
+      <div class="tool-title">2. Set-up Maskine</div>
+      <div class="tool-short">Gør emnet til en sigbar sætning.</div>
+      <div class="tool-button">Åbn værktøj</div>
+
+      <div class="tooltip">
+        <strong>Hvornår:</strong> Når du har et emne, men ikke en formulering.<br><br>
+        <strong>Hvad den gør:</strong> Emne → underemne → holdning → “sætning til scene”. Det bliver din virkelighed 1, som punchline-maskinen kan læse.
+      </div>
+    </a>
+
+    <!-- Punchline Maskine -->
+    <a class="tool-card" href="https://1is1.github.io/joke-punchline-machine/" target="_blank" rel="noreferrer">
+      <div class="tool-title">3. Punchline Maskine</div>
+      <div class="tool-short">Bryd en antagelse og lav punchline.</div>
+      <div class="tool-button">Åbn værktøj</div>
+
+      <div class="tooltip">
+        <strong>Hvornår:</strong> Når du allerede har en set-up-sætning.<br><br>
+        <strong>Hvad den gør:</strong> Du skriver publikums antagelser ned og vælger én at bryde → det er din virkelighed 2 → du formulerer punchlinen.
+      </div>
+    </a>
+  </div>
+</body>
+</html>
