@@ -10,6 +10,7 @@
       --card: #ffffff;
       --accent: #2563eb;
       --text: #0f172a;
+      --card-hover: color-mix(in srgb, var(--accent) 2%, var(--card));
     }
     * { box-sizing: border-box; }
     body {
@@ -62,7 +63,8 @@
     }
     .tool-card:hover {
       transform: translateY(-2px);
-      box-shadow: 0 6px 24px rgba(15,23,42,.08);
+      background: var(--card-hover);
+      box-shadow: 0 6px 24px rgba(15,23,42,.15);
     }
     .tool-title {
       font-weight: 600;
@@ -152,15 +154,14 @@
 <body>
   <div class="header">
     <h1>Dine tre jokeværktøjer</h1>
-    <p>Klik for at åbne. Hold musen over for at se hvornår du skal bruge værktøjet.</p>
+    <p>Klik for at åbne. Hold musen over et værktøj for at se detaljer om det.</p>
   </div>
 
   <div class="tool-row">
     <!-- Joke Web Bygger -->
     <a class="tool-card" href="https://1is1.github.io/joke-web/" rel="noreferrer">
-      <div class="tool-title">1. Joke Web Bygger</div>
+      <div class="tool-title">Joke Web Bygger</div>
       <div class="tool-short">Udforsk emner og associationer.</div>
-      <div class="tool-button">Åbn</div>
 
       <div class="tooltip">
         <strong>Hvornår:</strong> Når du ikke ved hvad du skal skrive om eller hvilke associationer der kan laves til et emne.<br><br>
@@ -170,9 +171,8 @@
 
     <!-- Set-up Maskine -->
     <a class="tool-card" href="https://1is1.github.io/joke-sentence-machine/" rel="noreferrer">
-      <div class="tool-title">2. Set-up Maskine</div>
+      <div class="tool-title">Set-up Maskine</div>
       <div class="tool-short">Gør et emne til et set-up / en sigbar sætning.</div>
-      <div class="tool-button">Åbn</div>
 
       <div class="tooltip">
         <strong>Hvornår:</strong> Når du har et emne, men ikke en formulering.<br><br>
@@ -185,9 +185,8 @@
 
     <!-- Punchline Maskine -->
     <a class="tool-card" href="https://1is1.github.io/joke-punchline-machine/" rel="noreferrer">
-      <div class="tool-title">3. Punchline Maskine</div>
+      <div class="tool-title">Punchline Maskine</div>
       <div class="tool-short">Skab en punchline ved at identificere og bryde antagelser.</div>
-      <div class="tool-button">Åbn</div>
 
       <div class="tooltip">
         <strong>Hvornår:</strong> Når du allerede har en set-up-sætning.<br><br>
